@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeenRise.com - Global Sīrah AI Operating System</title>
+    <!-- Chosen Palette: Warm Neutral & Islamic Emerald (Background: #FAFAF7, Emerald: #0D5C3A, Gold: #D97706, Slate: #1E293B) -->
+    <!-- Application Structure Plan: Designed as a high-impact, single-page interactive dashboard and strategic exploration tool for the DeenRise AI Operating System. Structure features 7 core domain sections: (1) Executive KPI Overview with volume forecasting charts, (2) 18 AI Tool Classification & Capability Explorer with dynamic filtering, (3) 12-Layer Knowledge Architecture visualizer, (4) 30-Stage Translation Factory pipeline tracker, (5) 31-Language Evidence-Based Rollout Matrix with interactive evaluation metrics, (6) Numerous AI Master Sheet Blueprint simulator, and (7) Islamic Content Integrity & SMIL Media Overlay audio-text sync interactive demonstration. This user flow transforms complex multi-dimensional architectural specifications into an intuitive, interactive experience for decision-makers and engineers. -->
+    <!-- Visualization & Content Choices: 1. Chart.js Bar & Line Charts for 5-Phase Language Rollout & Production Velocity (Canvas-based). 2. Dynamic Tool Matrix with Tier Filters (HTML/Tailwind Grid + JS State). 3. Dynamic Interactive Layered Architecture Diagram (HTML Grid + JS Detail Pane). 4. 30-Stage Pipeline Flow with Filterable Category Tabs (Tailwind Flex/Grid + JS detail modal/drawer). 5. Numerous AI Sheet Simulator (HTML Table + JS search/filter). 6. SMIL Audio-Text Synchronization Visual Simulator (Vanilla JS timer + HTML text highlighting). NO SVG images used. NO Mermaid JS used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deenBg: '#FAFAF7',
+                        deenCard: '#FFFFFF',
+                        deenPrimary: '#0D5C3A',
+                        deenPrimaryDark: '#083E27',
+                        deenGold: '#D97706',
+                        deenGoldLight: '#FEF3C7',
+                        deenSlate: '#1E293B',
+                        deenMuted: '#64748B',
+                        deenBorder: '#E2E8F0'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAFAF7;
+            color: #1E293B;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 3px;
+        }
+        .smil-highlight {
+            background-color: #FEF3C7;
+            color: #92400E;
+            border-bottom: 2px solid #D97706;
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-deenPrimary text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-deenGold text-deenSlate font-bold text-xl flex items-center justify-center shadow-inner">
+                    DR
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight">DeenRise.com AI Operating System</h1>
+                    <p class="text-xs text-emerald-200">Faith × Logic × Future • Master R&amp;D &amp; Implementation Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2 mt-2 sm:mt-0 text-xs font-medium">
+                <span class="bg-emerald-800 text-emerald-100 px-3 py-1 rounded-full">100+ Sīrah Books</span>
+                <span class="bg-emerald-800 text-emerald-100 px-3 py-1 rounded-full">31 Baseline Languages</span>
+                <span class="bg-deenGold text-deenSlate px-3 py-1 rounded-full font-bold">1-Year Pro Access</span>
+            </div>
+        </div>
+        <!-- Tab Navigation Bar -->
+        <nav class="bg-deenPrimaryDark border-t border-emerald-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-1 overflow-x-auto custom-scrollbar">
+                <button onclick="switchTab('overview')" id="tab-overview" class="nav-tab px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-t-md whitespace-nowrap bg-deenBg text-deenPrimary">
+                    📊 Executive Overview
+                </button>
+                <button onclick="switchTab('tools')" id="tab-tools" class="nav-tab px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-t-md whitespace-nowrap text-emerald-100 hover:bg-emerald-900">
+                    ⚙️ 18 AI Tool Strategy
+                </button>
+                <button onclick="switchTab('architecture')" id="tab-architecture" class="nav-tab px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-t-md whitespace-nowrap text-emerald-100 hover:bg-emerald-900">
+                    🏛️ 12-Layer Architecture
+                </button>
+                <button onclick="switchTab('factory')" id="tab-factory" class="nav-tab px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-t-md whitespace-nowrap text-emerald-100 hover:bg-emerald-900">
+                    🏭 30-Stage Translation Factory
+                </button>
+                <button onclick="switchTab('languages')" id="tab-languages" class="nav-tab px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-t-md whitespace-nowrap text-emerald-100 hover:bg-emerald-900">
+                    🌐 31-Language Roadmap
+                </button>
+                <button onclick="switchTab('mastersheet')" id="tab-mastersheet" class="nav-tab px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-t-md whitespace-nowrap text-emerald-100 hover:bg-emerald-900">
+                    📋 Numerous AI Blueprint
+                </button>
+                <button onclick="switchTab('integrity')" id="tab-integrity" class="nav-tab px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-t-md whitespace-nowrap text-emerald-100 hover:bg-emerald-900">
+                    🔒 Integrity &amp; SMIL Sync
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Body -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- ================= TAB 1: EXECUTIVE OVERVIEW ================= -->
+        <section id="sec-overview" class="tab-content space-y-6">
+            <!-- Intro Paragraph -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-deenBorder">
+                <h2 class="text-2xl font-bold text-deenPrimary mb-2">Architectural Blueprint &amp; System Purpose</h2>
+                <p class="text-sm text-deenSlate leading-relaxed">
+                    The <strong>DeenRise Global Sīrah AI Operating System</strong> shifts Islamic publishing away from disjointed software applications toward a continuous, automated knowledge production machine. Driven by Automate IQ triggers and anchored by Google Sheets (via Numerous AI) as a master state manager, the system translates authentic classical Arabic Sīrah texts into 31 languages. It seamlessly generates synchronized EPUB3 eBooks, 44.1kHz audiobooks via Smallest AI, localized video courses with HeyGen, and institutional consulting whitepapers—all protected by a strict, non-negotiable Islamic Scholar Approval Gate.
+                </p>
+            </div>
+
+            <!-- Metric Cards Row -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-deenBorder text-center">
+                    <p class="text-xs text-deenMuted font-medium uppercase tracking-wider">Source Books</p>
+                    <p class="text-2xl font-bold text-deenPrimary mt-1">100+</p>
+                    <p class="text-[10px] text-emerald-600 mt-1">Authentic Sīrah Texts</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-deenBorder text-center">
+                    <p class="text-xs text-deenMuted font-medium uppercase tracking-wider">Target Languages</p>
+                    <p class="text-2xl font-bold text-deenPrimary mt-1">31</p>
+                    <p class="text-[10px] text-emerald-600 mt-1">5 Phased Sequences</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-deenBorder text-center">
+                    <p class="text-xs text-deenMuted font-medium uppercase tracking-wider">eBook Editions</p>
+                    <p class="text-2xl font-bold text-deenGold mt-1">3,100</p>
+                    <p class="text-[10px] text-amber-700 mt-1">EPUB3 + SMIL Audio</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-deenBorder text-center">
+                    <p class="text-xs text-deenMuted font-medium uppercase tracking-wider">Stack Tools</p>
+                    <p class="text-2xl font-bold text-deenSlate mt-1">18</p>
+                    <p class="text-[10px] text-deenMuted mt-1">1-Yr Pro Access</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-deenBorder text-center">
+                    <p class="text-xs text-deenMuted font-medium uppercase tracking-wider">Factory Pipeline</p>
+                    <p class="text-2xl font-bold text-deenSlate mt-1">30</p>
+                    <p class="text-[10px] text-deenMuted mt-1">Rigorous Stages</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-deenBorder text-center">
+                    <p class="text-xs text-deenMuted font-medium uppercase tracking-wider">Scholar Gate</p>
+                    <p class="text-2xl font-bold text-emerald-700 mt-1">100%</p>
+                    <p class="text-[10px] text-emerald-600 mt-1">Zero Hallucination</p>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Velocity Projection Chart -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-deenBorder">
+                    <h3 class="text-base font-bold text-deenSlate mb-1">12-Month Publishing Velocity Forecast</h3>
+                    <p class="text-xs text-deenMuted mb-4">Cumulative production of translated eBooks &amp; synced audiobooks across 5 rollout phases.</p>
+                    <div class="chart-container">
+                        <canvas id="velocityChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- AI Stack Resource Allocation -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-deenBorder">
+                    <h3 class="text-base font-bold text-deenSlate mb-1">Core AI Operating System Distribution</h3>
+                    <p class="text-xs text-deenMuted mb-4">Functional workload allocation across primary processing nodes.</p>
+                    <div class="chart-container">
+                        <canvas id="stackDistributionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Central Strategic Rationale Box -->
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-6">
+                <div class="flex items-start space-x-3">
+                    <span class="text-amber-600 text-xl font-bold">💡</span>
+                    <div>
+                        <h3 class="text-base font-bold text-amber-900">Solving the Central Architectural Question</h3>
+                        <p class="text-xs text-amber-800 leading-relaxed mt-1">
+                            Rather than deploying 18 isolated software applications, DeenRise constructs a unified event-driven pipeline. 
+                            <strong>Google Sheets + Numerous AI</strong> serves as the central relational state machine. <strong>Lyzr</strong> provides secure, vector-backed theological reasoning (Qdrant + BM25 Cognis memory) to prevent hallucinated rulings. <strong>Smallest AI (Lightning v3.1)</strong> and <strong>HeyGen (Precision lip-sync)</strong> render high-fidelity audio/video assets, while <strong>Automate IQ</strong> orchestrates data triggers. Human effort is strictly reserved for high-leverage theological review gates.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: 18 AI TOOL STRATEGY ================= -->
+        <section id="sec-tools" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-deenBorder">
+                <h2 class="text-2xl font-bold text-deenPrimary mb-2">18 AI Tool Classification &amp; Capability Strategy</h2>
+                <p class="text-sm text-deenSlate leading-relaxed">
+                    To prevent software bloat and subscription waste during the 1-year Pro access period, every tool has been rigorously classified based on verified 2026 technical capabilities, API readiness, and exact functional utility in the 31-language Sīrah translation factory.
+                </p>
+                <!-- Tool Category Filters -->
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <button onclick="filterTools('ALL')" class="tool-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-deenPrimary text-white">All (18)</button>
+                    <button onclick="filterTools('CORE')" class="tool-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-100 text-emerald-800 hover:bg-emerald-200">CORE (7)</button>
+                    <button onclick="filterTools('HIGH VALUE')" class="tool-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-100 text-blue-800 hover:bg-blue-200">HIGH VALUE (5)</button>
+                    <button onclick="filterTools('SUPPORTING')" class="tool-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 text-slate-800 hover:bg-slate-200">SUPPORTING (3)</button>
+                    <button onclick="filterTools('DUPLICATIVE')" class="tool-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-amber-100 text-amber-800 hover:bg-amber-200">DUPLICATIVE (1)</button>
+                    <button onclick="filterTools('LOW PRIORITY')" class="tool-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-purple-100 text-purple-800 hover:bg-purple-200">LOW PRIORITY (1)</button>
+                    <button onclick="filterTools('NOT RECOMMENDED')" class="tool-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-rose-100 text-rose-800 hover:bg-rose-200">NOT RECOMMENDED (1)</button>
+                </div>
+            </div>
+
+            <!-- Dynamic Tool Grid -->
+            <div id="tool-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: 12-LAYER ARCHITECTURE ================= -->
+        <section id="sec-architecture" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-deenBorder">
+                <h2 class="text-2xl font-bold text-deenPrimary mb-2">12-Layer DeenRise Knowledge Architecture</h2>
+                <p class="text-sm text-deenSlate leading-relaxed">
+                    The DeenRise AI Operating System cascades through 12 distinct functional layers—from classical Arabic source ingestion down to continuous business intelligence and ROI tracking. Click any layer below to explore its detailed data flows, AI engines, and human review gates.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Layer Navigation Stack (Left) -->
+                <div class="lg:col-span-5 space-y-2" id="layer-stack-container">
+                    <!-- Dynamic Layer items populated via JS -->
+                </div>
+
+                <!-- Layer Detail Panel (Right) -->
+                <div class="lg:col-span-7 bg-white p-6 rounded-xl shadow-sm border border-deenBorder sticky top-28 self-start">
+                    <div id="layer-detail-pane">
+                        <div class="text-center py-12 text-deenMuted">
+                            <p class="text-lg">👈 Select any layer on the left to inspect its detailed system specs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: 30-STAGE TRANSLATION FACTORY ================= -->
+        <section id="sec-factory" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-deenBorder">
+                <h2 class="text-2xl font-bold text-deenPrimary mb-2">The 30-Stage "Sīrah Translation Factory"</h2>
+                <p class="text-sm text-deenSlate leading-relaxed">
+                    An industrial, heavily governed 30-stage pipeline designed to convert raw classical Arabic manuscripts into verified multilingual eBooks, audiobooks, courses, and localized videos across 31 target languages.
+                </p>
+                <!-- Pipeline Group Filters -->
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <button onclick="filterFactory('ALL')" class="factory-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-deenPrimary text-white">All Stages (1-30)</button>
+                    <button onclick="filterFactory('INGESTION')" class="factory-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 text-slate-800 hover:bg-slate-200">Stages 1-12: Ingestion &amp; Prep</button>
+                    <button onclick="filterFactory('TRANSLATION')" class="factory-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-100 text-blue-800 hover:bg-blue-200">Stages 13-19: AI &amp; Scholar Review</button>
+                    <button onclick="filterFactory('PUBLISHING')" class="factory-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-100 text-emerald-800 hover:bg-emerald-200">Stages 20-26: Media Rendering</button>
+                    <button onclick="filterFactory('OPERATIONS')" class="factory-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-amber-100 text-amber-800 hover:bg-amber-200">Stages 27-30: Distribution &amp; Analytics</button>
+                </div>
+            </div>
+
+            <!-- Factory Stages Grid / List -->
+            <div id="factory-stages-grid" class="space-y-3">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </section>
+
+        <!-- ================= TAB 5: 31-LANGUAGE ROADMAP ================= -->
+        <section id="sec-languages" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-deenBorder">
+                <h2 class="text-2xl font-bold text-deenPrimary mb-2">31-Language Evidence-Based Rollout Strategy</h2>
+                <p class="text-sm text-deenSlate leading-relaxed">
+                    Treating all 31 languages as equal at launch risks quality degradation and severe QA bottlenecks. DeenRise executes a 5-phase evidence-based rollout sequence evaluated on market demand, translation difficulty, Islamic terminology density, and 2026 TTS/STT API quality.
+                </p>
+
+                <!-- Phase Filters -->
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <button onclick="filterLanguages('ALL')" class="lang-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-deenPrimary text-white">All 31 Languages</button>
+                    <button onclick="filterLanguages('P1')" class="lang-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-100 text-emerald-800 hover:bg-emerald-200">Phase 1: Core Markets (M1-3)</button>
+                    <button onclick="filterLanguages('P2')" class="lang-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-100 text-blue-800 hover:bg-blue-200">Phase 2: Major Demographics (M4-6)</button>
+                    <button onclick="filterLanguages('P3')" class="lang-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-amber-100 text-amber-800 hover:bg-amber-200">Phase 3: Indic Region (M7-8)</button>
+                    <button onclick="filterLanguages('P4')" class="lang-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-purple-100 text-purple-800 hover:bg-purple-200">Phase 4: Complex Localization (M9-10)</button>
+                    <button onclick="filterLanguages('P5')" class="lang-filter-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-rose-100 text-rose-800 hover:bg-rose-200">Phase 5: Low-Resource (M11-12)</button>
+                </div>
+            </div>
+
+            <!-- Language Readiness Radar & Table -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Radar Chart -->
+                <div class="lg:col-span-5 bg-white p-5 rounded-xl shadow-sm border border-deenBorder">
+                    <h3 class="text-base font-bold text-deenSlate mb-1">Phase Tech Readiness Scores</h3>
+                    <p class="text-xs text-deenMuted mb-4">Evaluating LLM Accuracy, TTS Latency/Quality, and Terminology Glossaries.</p>
+                    <div class="chart-container">
+                        <canvas id="languageRadarChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Languages Table -->
+                <div class="lg:col-span-7 bg-white p-5 rounded-xl shadow-sm border border-deenBorder">
+                    <h3 class="text-base font-bold text-deenSlate mb-3">Language Strategy Matrix</h3>
+                    <div class="overflow-x-auto max-h-[400px] overflow-y-auto custom-scrollbar border border-deenBorder rounded-lg">
+                        <table class="w-full text-left text-xs text-deenSlate">
+                            <thead class="bg-slate-50 text-deenMuted font-semibold sticky top-0 border-b border-deenBorder">
+                                <tr>
+                                    <th class="p-2.5">Language</th>
+                                    <th class="p-2.5">Phase</th>
+                                    <th class="p-2.5">Primary LLM Engine</th>
+                                    <th class="p-2.5">TTS Engine</th>
+                                    <th class="p-2.5">QA Difficulty</th>
+                                </tr>
+                            </thead>
+                            <tbody id="languages-table-body" class="divide-y divide-slate-100">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 6: NUMEROUS AI BLUEPRINT ================= -->
+        <section id="sec-mastersheet" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-deenBorder">
+                <h2 class="text-2xl font-bold text-deenPrimary mb-2">Numerous AI: Master Publishing Spreadsheet Simulator</h2>
+                <p class="text-sm text-deenSlate leading-relaxed">
+                    Google Sheets serves as the central operational database for the DeenRise OS. Powered by Numerous AI formulas, it dynamically scans translated outputs, validates terminology against a 5,000+ term glossary, tracks scholar assignments, and flags QA discrepancies.
+                </p>
+
+                <!-- Sheet Tabs Selector -->
+                <div class="flex flex-wrap gap-2 mt-4 border-b border-deenBorder pb-3">
+                    <button onclick="switchSheetTab('Books_Master')" id="stab-Books_Master" class="sheet-tab-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-deenPrimary text-white">Books_Master</button>
+                    <button onclick="switchSheetTab('Language_Master')" id="stab-Language_Master" class="sheet-tab-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">Language_Master (3,100 Matrix)</button>
+                    <button onclick="switchSheetTab('Terminology_Glossary')" id="stab-Terminology_Glossary" class="sheet-tab-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">Terminology_Glossary</button>
+                    <button onclick="switchSheetTab('QA_Log')" id="stab-QA_Log" class="sheet-tab-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">QA_Log &amp; Discrepancies</button>
+                </div>
+            </div>
+
+            <!-- Simulated Spreadsheet Container -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-deenBorder">
+                <div class="flex justify-between items-center mb-3">
+                    <span id="sheet-title-display" class="text-sm font-bold text-deenSlate">Sheet Preview: Books_Master</span>
+                    <input type="text" id="sheet-search" oninput="searchSheetData()" placeholder="🔍 Search records in sheet..." class="text-xs px-3 py-1.5 border border-deenBorder rounded-lg w-64 focus:outline-none focus:ring-1 focus:ring-deenPrimary">
+                </div>
+                <div class="overflow-x-auto max-h-[420px] overflow-y-auto custom-scrollbar border border-deenBorder rounded-lg">
+                    <table class="w-full text-left text-xs">
+                        <thead id="sheet-thead" class="bg-slate-100 text-deenMuted font-bold sticky top-0 border-b border-deenBorder">
+                            <!-- Dynamic Headings -->
+                        </thead>
+                        <tbody id="sheet-tbody" class="divide-y divide-slate-100">
+                            <!-- Dynamic Rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 7: INTEGRITY & SMIL SYNC ================= -->
+        <section id="sec-integrity" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-deenBorder">
+                <h2 class="text-2xl font-bold text-deenPrimary mb-2">Islamic Content Integrity &amp; SMIL Sync Architecture</h2>
+                <p class="text-sm text-deenSlate leading-relaxed">
+                    Religious educational content mandates rigorous theological safeguarding. DeenRise enforces a non-negotiable Red-Line Policy alongside an EPUB3 SMIL Media Overlay system that synchronizes Smallest AI generated audio with live text highlighting.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Red Line Integrity Policy -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-deenBorder space-y-4">
+                    <h3 class="text-lg font-bold text-rose-800 flex items-center space-x-2">
+                        <span>🛡️</span>
+                        <span>Religious Content Red-Line Protocol</span>
+                    </h3>
+                    <ul class="space-y-3 text-xs text-deenSlate">
+                        <li class="p-3 bg-rose-50 border border-rose-200 rounded-lg">
+                            <strong class="text-rose-900 block font-semibold">1. Zero Artificial Synthesis of Rulings / Hadith</strong>
+                            The system is strictly forbidden from generating new Fatwas, inventing Hadith, or synthesizing consensus (*Ijma'*) where scholarly disagreement exists.
+                        </li>
+                        <li class="p-3 bg-rose-50 border border-rose-200 rounded-lg">
+                            <strong class="text-rose-900 block font-semibold">2. Canonical Qur'an Preservation</strong>
+                            Qur'anic Arabic text and approved canonical translations (e.g., Saheeh International) are fetched strictly from verified databases. LLMs are never permitted to machine-translate Qur'anic verses directly.
+                        </li>
+                        <li class="p-3 bg-rose-50 border border-rose-200 rounded-lg">
+                            <strong class="text-rose-900 block font-semibold">3. Strict Citation &amp; Isnad Integrity</strong>
+                            Every Hadith reference must maintain its collection title, chapter number, Hadith ID, and authenticated scholar grading (Sahih, Hasan).
+                        </li>
+                        <li class="p-3 bg-rose-50 border border-rose-200 rounded-lg">
+                            <strong class="text-rose-900 block font-semibold">4. Un-automatable Human Scholar Gate</strong>
+                            Stage 17 of the factory cannot be bypassed by automated scripts. A certified Islamic scholar must cryptographically sign off on every manuscript in Numerous AI before media rendering initiates.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- SMIL Media Overlay Interactive Simulator -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-deenBorder space-y-4">
+                    <h3 class="text-lg font-bold text-deenPrimary flex items-center space-x-2">
+                        <span>🎧</span>
+                        <span>EPUB3 SMIL Media Overlay Audio-Text Simulator</span>
+                    </h3>
+                    <p class="text-xs text-deenMuted">
+                        Simulating synchronized Smallest AI audio playback (Lightning v3.1, 44.1kHz) with word-by-word text highlighting for Arabic learners and accessible eBook readers.
+                    </p>
+
+                    <!-- Language Selector for Demo -->
+                    <div class="flex items-center space-x-2">
+                        <label class="text-xs font-semibold text-deenSlate">Select Audio Language:</label>
+                        <select id="smil-lang-select" onchange="changeSmilLanguage()" class="text-xs p-1.5 border border-deenBorder rounded-lg focus:outline-none focus:ring-1 focus:ring-deenPrimary">
+                            <option value="en">English Narration</option>
+                            <option value="fr">French Narration (Français)</option>
+                            <option value="ur">Urdu Narration (اردو)</option>
+                            <option value="id">Indonesian Narration (Bahasa)</option>
+                        </select>
+                    </div>
+
+                    <!-- Audio Player Mock UI -->
+                    <div class="bg-slate-900 text-white p-4 rounded-xl space-y-3">
+                        <div class="flex justify-between items-center text-xs text-slate-300">
+                            <span>Chapter 1: The Character of the Prophet ﷺ</span>
+                            <span id="smil-time">00:00 / 00:12</span>
+                        </div>
+                        <!-- Progress Bar -->
+                        <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                            <div id="smil-progress" class="bg-deenGold h-full w-0 transition-all duration-300"></div>
+                        </div>
+                        <!-- Player Controls -->
+                        <div class="flex justify-center space-x-4 pt-1">
+                            <button onclick="toggleSmilAudio()" id="smil-play-btn" class="bg-deenGold text-deenSlate px-4 py-1.5 rounded-lg text-xs font-bold hover:bg-amber-500">
+                                ▶ Play Audio
+                            </button>
+                            <button onclick="resetSmilAudio()" class="bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-slate-600">
+                                ↺ Reset
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Synchronized Text Box -->
+                    <div id="smil-text-box" class="p-4 bg-slate-50 border border-deenBorder rounded-xl text-sm leading-relaxed min-h-[120px] flex items-center justify-center text-center">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-deenSlate text-slate-400 text-xs py-6 border-t border-slate-800 mt-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center gap-4">
+            <div>
+                <p class="font-semibold text-slate-200">DeenRise Global Sīrah AI Operating System</p>
+                <p class="text-[11px] text-slate-500">Tradition Powered by Innovation • 1-Year Full Pro Architecture</p>
+            </div>
+            <div class="flex space-x-4 text-[11px]">
+                <span>100+ Books</span>
+                <span>•</span>
+                <span>31 Languages</span>
+                <span>•</span>
+                <span>Zero Hallucination Guarantee</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tool Detail Modal -->
+    <div id="tool-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full p-6 space-y-4 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <div class="flex justify-between items-start border-b border-deenBorder pb-3">
+                <div>
+                    <span id="modal-tool-cat" class="px-2.5 py-1 text-[10px] font-bold rounded-full"></span>
+                    <h3 id="modal-tool-name" class="text-xl font-bold text-deenSlate mt-1"></h3>
+                </div>
+                <button onclick="closeToolModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">✕</button>
+            </div>
+            <div id="modal-tool-body" class="space-y-3 text-xs text-deenSlate">
+                <!-- Populated dynamically -->
+            </div>
+            <div class="pt-3 border-t border-deenBorder text-right">
+                <button onclick="closeToolModal()" class="bg-deenSlate text-white px-4 py-1.5 rounded-lg text-xs font-semibold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // ================= DATA STRUCTURES ================= //
+
+        // 18 AI Tools Data
+        const toolsData = [
+            {
+                name: "Lyzr",
+                cat: "CORE",
+                verif: "Verified (2026)",
+                capability: "Secure Agent Framework with Persistent Cognis Vector Memory (Qdrant + BM25)",
+                useCase: "Islamic Knowledge & Translation QA Reasoning Agents",
+                freq: "Daily",
+                risks: "Hallucinated rulings if non-vetted corpus is ingested",
+                kpi: "Defect Detection Rate (>98%)",
+                rationale: "Core reasoning engine. Provides session-isolated persistent memory for checking translation against Islamic glossaries without data leakage.",
+                details: "Lyzr agents query authentic vector databases stored locally or in secure VPCs. Configured with strict zero-hallucination guardrails and prompt locks."
+            },
+            {
+                name: "Smallest AI",
+                cat: "CORE",
+                verif: "Verified (2026)",
+                capability: "Lightning v3.1 TTS (44.1kHz, 200ms TTFB) & Pulse STT (64ms)",
+                useCase: "31-Language Audiobook Narration & Voice Learning Interfaces",
+                freq: "Daily",
+                risks: "Arabic pronunciation drift on unvowelled proper nouns",
+                kpi: "Word Error Rate (WER < 2.5%)",
+                rationale: "High-fidelity native voice output with human conversational prosody (breathing, pacing) prevents educational listener fatigue.",
+                details: "Custom phonetic dictionaries force correct pronunciation of diacritics even when Arabic terms are embedded in non-Arabic text."
+            },
+            {
+                name: "HeyGen",
+                cat: "CORE",
+                verif: "Verified (2026)",
+                capability: "Precision Lip-Sync Video Dubbing across 177+ Languages",
+                useCase: "Sīrah Course Localized Video Production & Avatars",
+                freq: "Specific Projects",
+                risks: "Mouth movement desynchronization on complex Arabic phonemes",
+                kpi: "Lip-Sync Precision Score (>95%)",
+                rationale: "Converts 1 master English/Arabic teaching video into 31 natural localized video lessons without re-shooting.",
+                details: "Precision Lip-Sync Mode is strictly mandatory for all course lessons to ensure phonetically natural articulation."
+            },
+            {
+                name: "Numerous AI",
+                cat: "CORE",
+                verif: "Verified (2026)",
+                capability: "Spreadsheet AI Automation & Dynamic Formula Generation",
+                useCase: "DeenRise Master Publishing Spreadsheet & State Machine",
+                freq: "Daily",
+                risks: "Google Sheet cell formula rate-limit throttles during batch calls",
+                kpi: "Sync Latency (< 5 sec)",
+                rationale: "Acts as the central relational database tracking 3,100 project statuses, translator workflows, and automated error logging.",
+                details: "Uses custom regex and prompt formulas to automatically validate translated texts against master glossaries directly in sheet rows."
+            },
+            {
+                name: "Automate IQ",
+                cat: "CORE",
+                verif: "Verified (2026)",
+                capability: "Enterprise Webhook Orchestration & API Event Triggers",
+                useCase: "End-to-End Pipeline Automation Layer",
+                freq: "Daily",
+                risks: "Failed webhook delivery during high-concurrency batch jobs",
+                kpi: "System Uptime & Success Rate (99.9%)",
+                rationale: "The central nervous system linking Sheets, Lyzr, Pandoc, Smallest AI, and HeyGen without manual developer intervention.",
+                details: "Executes deterministic multi-step triggers upon status changes in Numerous AI sheets."
+            },
+            {
+                name: "Humanic AI",
+                cat: "CORE",
+                verif: "Verified (2026)",
+                capability: "AI-Native Personalized Email Lifecycle Engine (Starter Plan)",
+                useCase: "Multilingual Reader Engagement & Free-to-Paid Funnels",
+                freq: "Daily",
+                risks: "Email deliverability drop if spam triggers are generated",
+                kpi: "Click-Through Rate (CTR > 8%) & Open Rate (>35%)",
+                rationale: "Automates segment-based email nurtures across 31 languages for eBook downloads, course enrollees, and institutional contacts.",
+                details: "Natively connects with Shopify/Webhooks to trigger automated 5-day educational onboarding sequences upon eBook download."
+            },
+            {
+                name: "GetMulti",
+                cat: "CORE",
+                verif: "Partially Verified",
+                capability: "Multi-Model Benchmarking & Side-by-Side LLM Evaluation",
+                useCase: "Arabic-to-31 Language LLM Comparative Scoring",
+                freq: "Weekly",
+                risks: "Unnecessary token consumption on redundant model runs",
+                kpi: "Model Cost vs Quality Ratio Optimization",
+                rationale: "Enables simultaneous testing of DeepSeek-R1, Claude 3.5 Sonnet, and GPT-4o to identify the exact best model per target language.",
+                details: "Outputs comparative benchmark CSVs evaluated on citation preservation, semantic fidelity, and grammatical naturalness."
+            },
+            {
+                name: "SuperGrow",
+                cat: "HIGH VALUE",
+                verif: "Verified (2026)",
+                capability: "LinkedIn Brand Engine & PostCast AI Interviewer",
+                useCase: "Founder & Brand Thought Leadership Scaling",
+                freq: "Daily",
+                risks: "Generic tone if post drafts aren't founder-edited",
+                kpi: "Organic LinkedIn Impressions & Inbound Leads",
+                rationale: "Accelerates founder content creation without utilizing risky cookie-scraping scripts that cause LinkedIn account bans.",
+                details: "PostCast allows the founder to dictate raw ideas on 'Faith × Logic × Future' which are converted into structured carousel posts."
+            },
+            {
+                name: "SuperPrompts",
+                cat: "HIGH VALUE",
+                verif: "Verified (2026)",
+                capability: "Prompt Engineering Repository & Version Control",
+                useCase: "Sīrah Translation & Formatting Prompt Testing",
+                freq: "Weekly",
+                risks: "Prompt version drift across pipeline nodes",
+                kpi: "Prompt Iteration Speed & Output Accuracy",
+                rationale: "Stores, tests, and versions complex multi-shot translation system prompts before pushing them to Automate IQ production triggers.",
+                details: "Maintains clear versioning (v0.1 to v2.0) with regression test suites for Islamic honorifics and citation preservation."
+            },
+            {
+                name: "GetOwl AI",
+                cat: "HIGH VALUE",
+                verif: "Verified (2026)",
+                capability: "Deep Research Synthesis & Source Analysis",
+                useCase: "Historical Chronology & Sīrah Source Verification",
+                freq: "Weekly",
+                risks: "Over-reliance on synthesized secondary summaries",
+                kpi: "Source Verification Accuracy (100%)",
+                rationale: "Extracts and cross-references bibliographical data across historical Sīrah accounts to identify timeline contradictions.",
+                details: "Strictly confined to organizing source text bibliographies; never permitted to synthesize unverified Fatwas."
+            },
+            {
+                name: "Fireflies AI",
+                cat: "HIGH VALUE",
+                verif: "Verified (2026)",
+                capability: "Automated Meeting Transcription & Action Item Extraction",
+                useCase: "Scholar Alignment & Terminology Decision Logging",
+                freq: "Weekly",
+                risks: "Phonetic misinterpretation of complex Arabic scholarly terms",
+                kpi: "Action Extraction Accuracy (>90%)",
+                rationale: "Captures deep scholarly discussions on translation nuances and automatically feeds decision notes into Numerous AI.",
+                details: "Integrates with Automate IQ to turn meeting decisions into actionable tasks in project boards."
+            },
+            {
+                name: "Prompt Library",
+                cat: "HIGH VALUE",
+                verif: "Verified (2026)",
+                capability: "Pre-Built Prompt Template Repository",
+                useCase: "Baseline Marketing & Operations Acceleration",
+                freq: "Specific Projects",
+                risks: "Generic un-customized prompt outputs",
+                kpi: "Time-to-Draft Reduction (50%)",
+                rationale: "Provides baseline operational prompt templates which are then upgraded into DeenRise proprietary Sīrah prompts.",
+                details: "Accelerates generic administrative drafting while keeping proprietary theological workflows separate."
+            },
+            {
+                name: "Phot.AI",
+                cat: "SUPPORTING",
+                verif: "Verified (2026)",
+                capability: "Batch AI Image Editing & Background Processing",
+                useCase: "eBook Cover Localization & Social Graphic Generation",
+                freq: "Specific Projects",
+                risks: "Aesthetic drift across localized book series",
+                kpi: "Asset Generation Time per Book (< 5 mins)",
+                rationale: "Batch generates 31 localized cover variants with swapped title typography for every Sīrah title launched.",
+                details: "Automates background removal, typography overlay, and social media thumbnail production via API."
+            },
+            {
+                name: "Wispr Flow",
+                cat: "SUPPORTING",
+                verif: "Verified (2026)",
+                capability: "Ultra-Fast Voice Dictation & Grammar Structuring",
+                useCase: "Voice-First Founder Operating System for SOPs & Notes",
+                freq: "Daily",
+                risks: "Dictation errors during fast multi-lingual speech",
+                kpi: "Founder Output Velocity (Words Per Minute x3)",
+                rationale: "Allows founder to dictate complex instructions, SOPs, and prompts on the go, eliminating keyboard typing bottlenecks.",
+                details: "Automatically cleans up vocal stutters and structures dictated audio into formatted text blocks."
+            },
+            {
+                name: "Emily AI",
+                cat: "SUPPORTING",
+                verif: "Verified (2026)",
+                capability: "AI Calendar & Meeting Coordination",
+                useCase: "Global Translator & Scholar Review Scheduling",
+                freq: "Daily",
+                risks: "Timezone calculation errors with remote scholars",
+                kpi: "Meeting No-Show Rate (< 2%)",
+                rationale: "Coordinates multi-timezone review calls across 30+ countries while enforcing strict founder deep-work window policies.",
+                details: "Enforces max 4-hour review windows on Tuesdays/Thursdays to protect focus blocks."
+            },
+            {
+                name: "Superjoin",
+                cat: "DUPLICATIVE",
+                verif: "Verified (2026)",
+                capability: "CRM to Google Sheets Data Pipeline",
+                useCase: "Data Syncing (Redundant in DeenRise Architecture)",
+                freq: "None",
+                risks: "Redundant software cost and sync overlap",
+                kpi: "N/A - Classified Duplicative",
+                rationale: "Automate IQ natively handles all required CRM and Sheet data syncs. Deploying Superjoin introduces unnecessary overhead.",
+                details: "Replaced by direct webhooks built into Automate IQ and Numerous AI."
+            },
+            {
+                name: "Skill Shunter",
+                cat: "LOW PRIORITY",
+                verif: "Verified (2026)",
+                capability: "Career Skill Mapping & Assessment",
+                useCase: "Translator AI Literacy Screening",
+                freq: "Specific Projects",
+                risks: "Low relevance to primary publishing output",
+                kpi: "Translator Onboarding Time",
+                rationale: "Identifying external linguistic skills is secondary to verifying certified Islamic scholarly credentials.",
+                details: "Used minimally during translator contractor hiring phases."
+            },
+            {
+                name: "Happenstance AI",
+                cat: "NOT RECOMMENDED",
+                verif: "Verified (2026)",
+                capability: "Automated Executive Networking & Cold Discovery",
+                useCase: "None (Violates DeenRise Institutional Protocol)",
+                freq: "None",
+                risks: "Algorithmic spamming damaging brand trust with Islamic institutions",
+                kpi: "N/A - Classified Rejected",
+                rationale: "DeenRise requires high-trust relationships with respected Islamic authorities. Automated cold outreach risks perception of spam.",
+                details: "Institutional relationships must be cultivated via warm intros and high-respect personal outreach."
+            }
+        ];
+
+        // 12 Architecture Layers Data
+        const layersData = [
+            {
+                num: 1,
+                title: "Source & Knowledge",
+                tools: "Classical Arabic Repositories, Qdrant Vector Store",
+                inputs: "Authentic Arabic Manuscripts, Hadith Collections, Tafsīr, Biographical Compendiums",
+                outputs: "Digitized Structured Text, Entity Graph (Isnad, Authors, Historical Eras)",
+                automation: "Automated OCR parsing & bibliographical metadata tagging via Python scripts",
+                gate: "Rights Clearance & Copyright Verification Gate"
+            },
+            {
+                num: 2,
+                title: "Research",
+                tools: "GetOwl AI, Lyzr Research Agent",
+                inputs: "Raw Digitized Arabic Text",
+                outputs: "Historical Chronology, Cross-Book Comparison Notes, Contradiction Flags",
+                automation: "Extracts dates, places, and biographical entities across multiple sources",
+                gate: "Historicity & Academic Verification Gate"
+            },
+            {
+                num: 3,
+                title: "Translation",
+                tools: "GetMulti, SuperPrompts, DeepSeek-R1, Claude 3.5 Sonnet",
+                inputs: "Arabic Source Text, Master Terminology Glossary",
+                outputs: "Raw Parallel Multilingual Drafts (31 Languages)",
+                automation: "Automate IQ triggers multi-model translation jobs upon chapter release",
+                gate: "Semantic Fidelity Benchmark Gate"
+            },
+            {
+                num: 4,
+                title: "Editorial",
+                tools: "Lyzr Translation QA Agent, Numerous AI",
+                inputs: "Raw Multilingual Translation Drafts",
+                outputs: "Polished Manuscripts with Standardized Honorifics & Citations",
+                automation: "Regex and LLM scanning for glossary compliance and missing verses",
+                gate: "STRICT ISLAMIC SCHOLAR APPROVAL GATE (Un-automatable)"
+            },
+            {
+                num: 5,
+                title: "Publishing",
+                tools: "Pandoc, WeasyPrint, Phot.AI",
+                inputs: "Approved Manuscripts, Localized Cover Designs",
+                outputs: "EPUB3 Files, KFX (Amazon KDP), Print-Ready PDFs with RTL Arabic styling",
+                automation: "Automated conversion from Markdown/HTML to EPUB3 with embedded diacritic fonts",
+                gate: "eBook Validation & RTL Alignment Check"
+            },
+            {
+                num: 6,
+                title: "Audio",
+                tools: "Smallest AI (Lightning v3.1 & Pulse)",
+                inputs: "Approved eBook Manuscripts, Phonetic Glossaries",
+                outputs: "44.1kHz High-Fidelity Audiobooks, Master MP3/WAV Chapter Stems",
+                automation: "API batch rendering of narration with enforced pronunciation diacritics",
+                gate: "Audio QA Pronunciation Review"
+            },
+            {
+                num: 7,
+                title: "Video",
+                tools: "HeyGen (Precision Mode)",
+                inputs: "Master Video Lesson + Smallest AI Audio Stems",
+                outputs: "31 Localized HD Course Video Lessons with Precision Lip-Sync",
+                automation: "Automate IQ triggers HeyGen API rendering upon audio QA approval",
+                gate: "Visual & Lip-Sync QA Gate"
+            },
+            {
+                num: 8,
+                title: "Education",
+                tools: "EPUB3 SMIL Engine, Custom LMS",
+                inputs: "eBooks, Audio Stems, Videos, Quiz Banks",
+                outputs: "Interactive Multilingual Courses, Synced Audio-Text Overlays, SCORM Packages",
+                automation: "Automated SMIL XML generation mapping audio timestamps to text IDs",
+                gate: "Pedagogical Structure Review"
+            },
+            {
+                num: 9,
+                title: "Consulting",
+                tools: "Lyzr Consultant Copilot",
+                inputs: "R&D Benchmarks, Translation System Architectures",
+                outputs: "Institutional Whitepapers, B2B AI Integration Toolkits for Islamic Organizations",
+                automation: "Auto-aggregates system benchmarks into modular consulting deliverables",
+                gate: "Executive Strategy Review"
+            },
+            {
+                num: 10,
+                title: "Marketing",
+                tools: "SuperGrow, Humanic AI",
+                inputs: "Launch Dates, Free eBook Downloads, Social Snippets",
+                outputs: "LinkedIn Posts, Multilingual Nurture Email Sequences, Launch Campaigns",
+                automation: "Humanic AI fires multi-day email onboarding upon subscriber opt-in",
+                gate: "Brand Tone & Ethical Compliance Check"
+            },
+            {
+                num: 11,
+                title: "Operations",
+                tools: "Automate IQ, Numerous AI, Fireflies AI, Emily AI",
+                inputs: "Project Statuses, Reviewer Calendars, Meeting Transcripts",
+                outputs: "Updated Production Boards, Actionable Task Assignments, Sync Logs",
+                automation: "Continuous event-driven synchronization across operational stack",
+                gate: "Operational Bottleneck Alarm"
+            },
+            {
+                num: 12,
+                title: "Intelligence",
+                tools: "Numerous AI KPI Dashboard, Lyzr Analytics Agent",
+                inputs: "API Costs, Translation Velocity Data, eBook Sales, CTR Metrics",
+                outputs: "Real-Time System Executive Dashboards, ROI Metrics, Forecast Models",
+                automation: "Automated nightly recalculation of burn rates and publication velocity",
+                gate: "Executive Monthly Review"
+            }
+        ];
+
+        // 30 Factory Stages
+        const factoryStages = [
+            { id: 1, title: "Book Selection", group: "INGESTION", tool: "Numerous AI", actor: "Scholar Board", gate: "Approved List" },
+            { id: 2, title: "Rights Clearance", group: "INGESTION", tool: "Numerous AI", actor: "Legal Team", gate: "Public Domain / License Verified" },
+            { id: 3, title: "Book Ingestion", group: "INGESTION", tool: "Python Parsing", actor: "Data Ops", gate: "File Integrity Check" },
+            { id: 4, title: "OCR & Transcription", group: "INGESTION", tool: "OCR Engine", actor: "AI Operator", gate: "Character Error Rate <0.1%" },
+            { id: 5, title: "Text Normalization", group: "INGESTION", tool: "Lyzr Agent", actor: "Data Ops", gate: "Diacritic Standardization" },
+            { id: 6, title: "Metadata Extraction", group: "INGESTION", tool: "GetOwl AI", actor: "Researcher", gate: "Author/Era Verified" },
+            { id: 7, title: "Chapter Segmentation", group: "INGESTION", tool: "Automate IQ", actor: "System", gate: "XML Schema Valid" },
+            { id: 8, title: "Reference Extraction", group: "INGESTION", tool: "Lyzr Agent", actor: "Researcher", gate: "Hadith/Qur'an Citations Mapped" },
+            { id: 9, title: "Islamic Terminology Extraction", group: "INGESTION", tool: "Lyzr Agent", actor: "Linguist", gate: "Unique Term List Created" },
+            { id: 10, title: "Master Glossary Alignment", group: "INGESTION", tool: "Numerous AI", actor: "Senior Linguist", gate: "Glossary Locked" },
+            { id: 11, title: "Style Guide Application", group: "INGESTION", tool: "SuperPrompts", actor: "Editorial Lead", gate: "Style Guide Versioned" },
+            { id: 12, title: "Research Validation", group: "INGESTION", tool: "GetOwl AI", actor: "Scholar", gate: "Historical Audit Pass" },
+            { id: 13, title: "AI Translation Execution", group: "TRANSLATION", tool: "GetMulti (Claude/DeepSeek)", actor: "AI System", gate: "Initial Draft Generated" },
+            { id: 14, title: "Multi-Model Comparison", group: "TRANSLATION", tool: "GetMulti", actor: "Translation Lead", gate: "Best Candidate Selected" },
+            { id: 15, title: "Translation QA Scanning", group: "TRANSLATION", tool: "Lyzr QA Agent", actor: "AI Operator", gate: "Defect Flags Identified" },
+            { id: 16, title: "Human Linguist Review", group: "TRANSLATION", tool: "Numerous AI Interface", actor: "Native Linguist", gate: "Fluency Approved" },
+            { id: 17, title: "Islamic Scholar Review", group: "TRANSLATION", tool: "Numerous AI", actor: "Certified Islamic Scholar", gate: "HARD STOP: Scholar Sign-Off" },
+            { id: 18, title: "Back Translation Verification", group: "TRANSLATION", tool: "Lyzr Agent", actor: "QA Lead", gate: "Semantic Fidelity >98%" },
+            { id: 19, title: "Final Language Editing", group: "TRANSLATION", tool: "Human Editor", actor: "Senior Editor", gate: "Final Proof Clean" },
+            { id: 20, title: "Manuscript Formatting", group: "PUBLISHING", tool: "Pandoc / WeasyPrint", actor: "Publishing Ops", gate: "EPUB3 Validation" },
+            { id: 21, title: "eBook Generation", group: "PUBLISHING", tool: "Pandoc", actor: "System", gate: "KFX & EPUB3 Compiled" },
+            { id: 22, title: "Cover Generation", group: "PUBLISHING", tool: "Phot.AI", actor: "Designer", gate: "Localized Art Approved" },
+            { id: 23, title: "Metadata & ISBN Tagging", group: "PUBLISHING", tool: "Numerous AI", actor: "Publishing Ops", gate: "ONIX Metadata Ready" },
+            { id: 24, title: "Audio Generation", group: "PUBLISHING", tool: "Smallest AI", actor: "Audio Engineer", gate: "44.1kHz Stems Rendered" },
+            { id: 25, title: "Video Generation", group: "PUBLISHING", tool: "HeyGen", actor: "Media Ops", gate: "Lip-Sync Approved" },
+            { id: 26, title: "Course Conversion", group: "PUBLISHING", tool: "LMS Builder", actor: "EdTech Lead", gate: "SMIL & SCORM Synced" },
+            { id: 27, title: "Marketing Asset Gen", group: "OPERATIONS", tool: "SuperGrow / Phot.AI", actor: "Marketing Lead", gate: "Campaign Pack Ready" },
+            { id: 28, title: "Multi-Channel Distribution", group: "OPERATIONS", tool: "Automate IQ", actor: "System", gate: "Storefronts Live" },
+            { id: 29, title: "Analytics Ingestion", group: "OPERATIONS", tool: "Humanic / Sheets", actor: "Data Analyst", gate: "Dashboard Active" },
+            { id: 30, title: "Continuous Improvement", group: "OPERATIONS", tool: "Lyzr / GetMulti", actor: "System Architect", gate: "Prompts & Glossaries Refined" }
+        ];
+
+        // 31 Languages Data
+        const languagesData = [
+            { name: "Arabic (MSA/Original)", code: "ar", phase: "P1", llm: "Source", tts: "Smallest AI", difficulty: "Low (Native)" },
+            { name: "English", code: "en", phase: "P1", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "Low" },
+            { name: "Urdu", code: "ur", phase: "P1", llm: "DeepSeek-R1 / Claude", tts: "Smallest AI", difficulty: "Medium" },
+            { name: "Indonesian", code: "id", phase: "P1", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "Low" },
+            { name: "Turkish", code: "tr", phase: "P1", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "Medium" },
+            { name: "French", code: "fr", phase: "P1", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "Low" },
+            { name: "Bangla", code: "bn", phase: "P2", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "Medium" },
+            { name: "Persian", code: "fa", phase: "P2", llm: "DeepSeek-R1", tts: "Smallest AI", difficulty: "Medium" },
+            { name: "Malay", code: "ms", phase: "P2", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "Low" },
+            { name: "German", code: "de", phase: "P2", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "Low" },
+            { name: "Spanish", code: "es", phase: "P2", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "Low" },
+            { name: "Russian", code: "ru", phase: "P2", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "Medium" },
+            { name: "Hindi", code: "hi", phase: "P3", llm: "Claude 3.5 / DeepSeek", tts: "Smallest AI Native", difficulty: "Medium" },
+            { name: "Tamil", code: "ta", phase: "P3", llm: "Claude 3.5 Sonnet", tts: "Smallest AI Native", difficulty: "High" },
+            { name: "Telugu", code: "te", phase: "P3", llm: "Claude 3.5 Sonnet", tts: "Smallest AI Native", difficulty: "High" },
+            { name: "Malayalam", code: "ml", phase: "P3", llm: "Claude 3.5 Sonnet", tts: "Smallest AI Native", difficulty: "High" },
+            { name: "Gujarati", code: "gu", phase: "P3", llm: "Claude 3.5 Sonnet", tts: "Smallest AI Native", difficulty: "Medium" },
+            { name: "Marathi", code: "mr", phase: "P3", llm: "Claude 3.5 Sonnet", tts: "Smallest AI Native", difficulty: "Medium" },
+            { name: "Punjabi", code: "pa", phase: "P3", llm: "Claude 3.5 Sonnet", tts: "Smallest AI Native", difficulty: "Medium" },
+            { name: "Chinese (Mandarin)", code: "zh", phase: "P4", llm: "Claude 3.5 / DeepSeek", tts: "Smallest AI", difficulty: "Very High" },
+            { name: "Japanese", code: "ja", phase: "P4", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "Very High" },
+            { name: "Korean", code: "ko", phase: "P4", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "High" },
+            { name: "Italian", code: "it", phase: "P4", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "Low" },
+            { name: "Portuguese", code: "pt", phase: "P4", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "Low" },
+            { name: "Thai", code: "th", phase: "P4", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "Very High" },
+            { name: "Vietnamese", code: "vi", phase: "P4", llm: "Claude 3.5 Sonnet", tts: "Smallest AI", difficulty: "High" },
+            { name: "Swahili", code: "sw", phase: "P5", llm: "Pivoted Fragment-Shot", tts: "Smallest AI Fallback", difficulty: "High" },
+            { name: "Hausa", code: "ha", phase: "P5", llm: "Pivoted Fragment-Shot", tts: "Smallest AI Fallback", difficulty: "Very High" },
+            { name: "Somali", code: "so", phase: "P5", llm: "Pivoted Fragment-Shot", tts: "Smallest AI Fallback", difficulty: "Very High" },
+            { name: "Amharic", code: "am", phase: "P5", llm: "Pivoted Fragment-Shot", tts: "Smallest AI Fallback", difficulty: "Very High" }
+        ];
+
+        // Master Spreadsheet Simulator Data
+        const sheetData = {
+            Books_Master: {
+                headers: ["Book ID", "Title (Arabic)", "Title (English)", "Author", "Eras / Hijri", "Word Count", "Status"],
+                rows: [
+                    ["BK-001", "الرحيق المختوم", "The Sealed Nectar", "Safiur Rahman Mubarakpuri", "Modern / 1396 AH", "145,000", "In_Translation"],
+                    ["BK-002", "زاد المعاد", "Provisions for the Hereafter", "Ibn Qayyim Al-Jawziyya", "Classical / 751 AH", "480,000", "Ingestion"],
+                    ["BK-003", "السيرة النبوية", "As-Sīrah An-Nabawiyyah", "Ibn Hisham", "Classical / 213 AH", "320,000", "Scholar_Review"],
+                    ["BK-004", "الشمايل المحمدية", "Shama'il Muhammadiyah", "Imam At-Tirmidhi", "Classical / 279 AH", "85,000", "Scholar_Approved"],
+                    ["BK-005", "فقه السيرة", "Fiqh Us-Sīrah", "Muhammad Al-Ghazali", "Modern / 1416 AH", "110,000", "In_Translation"]
+                ]
+            },
+            Language_Master: {
+                headers: ["Project Code", "Book ID", "Target Language", "Assigned Editor", "Assigned Scholar", "Progress Status", "Defect Flags"],
+                rows: [
+                    ["PRJ-001-EN", "BK-001", "English", "Dr. A. Rahman", "Sh. Yusuf K.", "Scholar_Approved", "0"],
+                    ["PRJ-001-FR", "BK-001", "French", "M. Laurent", "Sh. Tariq M.", "Editor_Review", "2 (Honorifics)"],
+                    ["PRJ-001-UR", "BK-001", "Urdu", "M. Iqbal", "Sh. Farooq A.", "Scholar_Approved", "0"],
+                    ["PRJ-001-BN", "BK-001", "Bangla", "T. Ahmed", "Sh. Rafiqul I.", "In_Translation", "1 (Diacritic)"],
+                    ["PRJ-003-EN", "BK-003", "English", "Dr. A. Rahman", "Sh. Yusuf K.", "Scholar_Review", "0"]
+                ]
+            },
+            Terminology_Glossary: {
+                headers: ["Term ID", "Arabic Term", "English Standard", "Urdu Standard", "French Standard", "Context / Definition"],
+                rows: [
+                    ["TRM-101", "وحي", "Divine Revelation (Wahy)", "وحی", "Révélation Divine", "Communication from Allah to Prophets"],
+                    ["TRM-102", "غزوة", "Prophetic Expedition (Ghazwah)", "غزوہ", "Expédition Prophétique", "Battle/Expedition led by Prophet ﷺ"],
+                    ["TRM-103", "صحابة", "Companions (Sahabah)", "صحابہ کرام", "Compagnons", "Direct disciples of the Prophet ﷺ"],
+                    ["TRM-104", "إسراء والمعراج", "Night Journey & Ascension", "اسراء و معراج", "Le Voyage Nocturne", "Miraculous journey to Jerusalem & Heavens"]
+                ]
+            },
+            QA_Log: {
+                headers: ["Log ID", "Project Code", "Stage Flagged", "Engine / Agent", "Discrepancy Description", "Status"],
+                rows: [
+                    ["LOG-801", "PRJ-001-FR", "Stage 15", "Lyzr QA Agent", "Missing honorific (ﷺ) after Prophet name in Para 4", "Resolved"],
+                    ["LOG-802", "PRJ-001-BN", "Stage 13", "GetMulti Bench", "Literal translation of 'Ghazwah' altered historical sense", "Under_Review"],
+                    ["LOG-803", "PRJ-003-EN", "Stage 18", "Lyzr Agent", "Hadith reference missing collection chapter index", "Resolved"]
+                ]
+            }
+        };
+
+        // SMIL Sentences Demo
+        const smilTexts = {
+            en: [
+                "The Messenger of Allah ﷺ was the most generous of all people.",
+                "He was even more generous during the blessed month of Ramadan.",
+                "When Jibril (Gabriel) met him, he was more generous than the blowing wind."
+            ],
+            fr: [
+                "Le Messager d'Allah ﷺ était le plus généreux de tous les hommes.",
+                "Il était encore plus généreux durant le mois béni de Ramadan.",
+                "Lorsque Jibril (Gabriel) le rencontrait, il était plus généreux que le vent envoyé."
+            ],
+            ur: [
+                "رسول اللہ صلی اللہ علیہ وسلم تمام لوگوں میں سب سے زیادہ سخی تھے۔",
+                "رمضان المبارک کے بابرکت مہینے میں آپ اور بھی زیادہ سخاوت فرماتے۔",
+                "جب جبریل علیہ السلام آپ سے ملتے تو آپ تیز ہوا سے بھی زیادہ سخاوت فرماتے تھے۔"
+            ],
+            id: [
+                "Rasulullah ﷺ adalah orang yang paling dermawan di antara seluruh manusia.",
+                "Beliau jauh lebih dermawan lagi pada bulan suci Ramadhan.",
+                "Ketika Malaikat Jibril menemui beliau, beliau lebih dermawan daripada angin yang berhembus."
+            ]
+        };
+
+        // ================= STATE & TAB NAVIGATION ================= //
+
+        let currentActiveTab = 'overview';
+        let chartsInitialized = false;
+        let smilInterval = null;
+        let smilIndex = 0;
+        let isSmilPlaying = false;
+        let activeSheet = 'Books_Master';
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-tab').forEach(el => {
+                el.classList.remove('bg-deenBg', 'text-deenPrimary');
+                el.classList.add('text-emerald-100', 'hover:bg-emerald-900');
+            });
+
+            document.getElementById(`sec-${tabId}`).classList.remove('hidden');
+            const activeNav = document.getElementById(`tab-${tabId}`);
+            activeNav.classList.add('bg-deenBg', 'text-deenPrimary');
+            activeNav.classList.remove('text-emerald-100', 'hover:bg-emerald-900');
+
+            currentActiveTab = tabId;
+
+            if (!chartsInitialized && (tabId === 'overview' || tabId === 'languages')) {
+                initCharts();
+            }
+        }
+
+        // ================= TAB 2: TOOL RENDER & FILTER ================= //
+
+        function renderTools(filterCat = 'ALL') {
+            const grid = document.getElementById('tool-grid');
+            grid.innerHTML = '';
+
+            const filtered = filterCat === 'ALL' ? toolsData : toolsData.filter(t => t.cat === filterCat);
+
+            filtered.forEach(tool => {
+                let badgeStyle = "bg-slate-100 text-slate-800";
+                if (tool.cat === 'CORE') badgeStyle = "bg-emerald-100 text-emerald-800 border border-emerald-300";
+                if (tool.cat === 'HIGH VALUE') badgeStyle = "bg-blue-100 text-blue-800 border border-blue-300";
+                if (tool.cat === 'SUPPORTING') badgeStyle = "bg-slate-100 text-slate-800 border border-slate-300";
+                if (tool.cat === 'DUPLICATIVE') badgeStyle = "bg-amber-100 text-amber-800 border border-amber-300";
+                if (tool.cat === 'LOW PRIORITY') badgeStyle = "bg-purple-100 text-purple-800 border border-purple-300";
+                if (tool.cat === 'NOT RECOMMENDED') badgeStyle = "bg-rose-100 text-rose-800 border border-rose-300";
+
+                const card = document.createElement('div');
+                card.className = "bg-white p-5 rounded-xl shadow-sm border border-deenBorder hover:shadow-md transition cursor-pointer flex flex-col justify-between";
+                card.onclick = () => openToolModal(tool);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold ${badgeStyle} px-2.5 py-0.5 rounded-full">${tool.cat}</span>
+                            <span class="text-[10px] text-deenMuted font-medium">${tool.verif}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-deenSlate">${tool.name}</h3>
+                        <p class="text-xs text-deenMuted mt-1 line-clamp-2">${tool.capability}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs space-y-1">
+                        <div class="flex justify-between text-deenMuted">
+                            <span>Usage: <strong class="text-deenSlate">${tool.freq}</strong></span>
+                            <span>KPI: <strong class="text-deenPrimary">${tool.kpi.split('(')[0]}</strong></span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterTools(cat) {
+            document.querySelectorAll('.tool-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-deenPrimary', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-800');
+            });
+            event.target.classList.add('bg-deenPrimary', 'text-white');
+            event.target.classList.remove('bg-slate-100', 'text-slate-800');
+            renderTools(cat);
+        }
+
+        function openToolModal(tool) {
+            document.getElementById('modal-tool-name').innerText = tool.name;
+            const catBadge = document.getElementById('modal-tool-cat');
+            catBadge.innerText = `${tool.cat} • ${tool.verif}`;
+            catBadge.className = "px-2.5 py-1 text-[10px] font-bold rounded-full bg-deenGoldLight text-amber-900";
+
+            document.getElementById('modal-tool-body').innerHTML = `
+                <div class="p-3 bg-slate-50 rounded-lg space-y-1">
+                    <strong class="text-deenPrimary font-semibold block">Verified Core Capability:</strong>
+                    <p>${tool.capability}</p>
+                </div>
+                <div>
+                    <strong class="font-semibold text-deenSlate">Exact DeenRise Use Case:</strong>
+                    <p class="mt-0.5">${tool.useCase}</p>
+                </div>
+                <div>
+                    <strong class="font-semibold text-deenSlate">Architectural Rationale:</strong>
+                    <p class="mt-0.5 text-deenMuted">${tool.rationale}</p>
+                </div>
+                <div>
+                    <strong class="font-semibold text-deenSlate">Technical Implementation Details:</strong>
+                    <p class="mt-0.5 text-deenMuted">${tool.details}</p>
+                </div>
+                <div class="grid grid-cols-2 gap-2 pt-2 text-[11px]">
+                    <div class="p-2 bg-rose-50 border border-rose-100 rounded-lg">
+                        <strong class="text-rose-900 block">Primary Risk:</strong>
+                        <span class="text-rose-700">${tool.risks}</span>
+                    </div>
+                    <div class="p-2 bg-emerald-50 border border-emerald-100 rounded-lg">
+                        <strong class="text-emerald-900 block">Primary KPI Metric:</strong>
+                        <span class="text-emerald-700">${tool.kpi}</span>
+                    </div>
+                </div>
+            `;
+            document.getElementById('tool-modal').classList.remove('hidden');
+        }
+
+        function closeToolModal() {
+            document.getElementById('tool-modal').classList.add('hidden');
+        }
+
+        // ================= TAB 3: LAYERED ARCHITECTURE RENDER ================= //
+
+        function renderLayers() {
+            const container = document.getElementById('layer-stack-container');
+            container.innerHTML = '';
+
+            layersData.forEach((layer, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-3.5 rounded-xl border border-deenBorder transition flex justify-between items-center bg-white hover:border-deenPrimary hover:shadow-sm layer-btn-${layer.num}`;
+                btn.onclick = () => selectLayer(layer.num);
+
+                btn.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <span class="w-7 h-7 rounded-lg bg-deenPrimary text-white font-bold text-xs flex items-center justify-center">L${layer.num}</span>
+                        <div>
+                            <h4 class="text-sm font-bold text-deenSlate">${layer.title}</h4>
+                            <p class="text-[10px] text-deenMuted line-clamp-1">${layer.tools}</p>
+                        </div>
+                    </div>
+                    <span class="text-deenMuted text-xs">➔</span>
+                `;
+                container.appendChild(btn);
+            });
+
+            selectLayer(1);
+        }
+
+        function selectLayer(num) {
+            const layer = layersData.find(l => l.num === num);
+            const detailPane = document.getElementById('layer-detail-pane');
+
+            document.querySelectorAll('#layer-stack-container button').forEach(btn => {
+                btn.classList.remove('border-deenPrimary', 'bg-emerald-50/50');
+            });
+            const activeBtn = document.querySelector(`.layer-btn-${num}`);
+            if (activeBtn) activeBtn.classList.add('border-deenPrimary', 'bg-emerald-50/50');
+
+            detailPane.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center border-b border-deenBorder pb-3">
+                        <div>
+                            <span class="text-xs font-bold text-deenGold uppercase tracking-wider">Layer ${layer.num} of 12</span>
+                            <h3 class="text-xl font-bold text-deenSlate">${layer.title} Layer</h3>
+                        </div>
+                        <span class="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-semibold">Active Pipeline Node</span>
+                    </div>
+
+                    <div class="space-y-3 text-xs text-deenSlate">
+                        <div>
+                            <strong class="text-deenMuted uppercase text-[10px] tracking-wider block">Primary Tools & AI Engines</strong>
+                            <p class="font-semibold text-deenPrimary mt-0.5 text-sm">${layer.tools}</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <div class="p-3 bg-slate-50 border border-deenBorder rounded-lg">
+                                <strong class="text-deenMuted text-[10px] uppercase block">Input Payload</strong>
+                                <p class="mt-1 font-medium">${layer.inputs}</p>
+                            </div>
+                            <div class="p-3 bg-slate-50 border border-deenBorder rounded-lg">
+                                <strong class="text-deenMuted text-[10px] uppercase block">Output Asset</strong>
+                                <p class="mt-1 font-medium">${layer.outputs}</p>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                            <strong class="text-amber-900 text-[10px] uppercase block font-bold">Automated Logic Trigger</strong>
+                            <p class="text-amber-800 mt-0.5">${layer.automation}</p>
+                        </div>
+
+                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg">
+                            <strong class="text-emerald-900 text-[10px] uppercase block font-bold">Quality &amp; Theological Approval Gate</strong>
+                            <p class="text-emerald-800 mt-0.5 font-semibold">${layer.gate}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ================= TAB 4: FACTORY RENDER & FILTER ================= //
+
+        function renderFactory(filterGroup = 'ALL') {
+            const container = document.getElementById('factory-stages-grid');
+            container.innerHTML = '';
+
+            const filtered = filterGroup === 'ALL' ? factoryStages : factoryStages.filter(s => s.group === filterGroup);
+
+            filtered.forEach(stage => {
+                let groupColor = "bg-slate-100 text-slate-800";
+                if (stage.group === 'TRANSLATION') groupColor = "bg-blue-100 text-blue-800";
+                if (stage.group === 'PUBLISHING') groupColor = "bg-emerald-100 text-emerald-800";
+                if (stage.group === 'OPERATIONS') groupColor = "bg-amber-100 text-amber-800";
+
+                const row = document.createElement('div');
+                row.className = "bg-white p-3.5 rounded-xl border border-deenBorder hover:shadow-sm transition flex flex-wrap md:flex-nowrap items-center justify-between gap-3";
+
+                row.innerHTML = `
+                    <div class="flex items-center space-x-3 w-full md:w-1/3">
+                        <span class="w-8 h-8 rounded-full bg-deenSlate text-white font-bold text-xs flex items-center justify-center flex-shrink-0">${stage.id}</span>
+                        <div>
+                            <h4 class="text-xs font-bold text-deenSlate">${stage.title}</h4>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded ${groupColor}">${stage.group}</span>
+                        </div>
+                    </div>
+                    <div class="text-xs text-deenMuted w-1/2 md:w-1/4">
+                        <span>Tool: <strong class="text-deenSlate">${stage.tool}</strong></span>
+                    </div>
+                    <div class="text-xs text-deenMuted w-1/2 md:w-1/4">
+                        <span>Actor: <strong class="text-deenSlate">${stage.actor}</strong></span>
+                    </div>
+                    <div class="w-full md:w-1/4 text-right">
+                        <span class="inline-block text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-1 rounded-lg">Gate: ${stage.gate}</span>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function filterFactory(group) {
+            document.querySelectorAll('.factory-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-deenPrimary', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-800');
+            });
+            event.target.classList.add('bg-deenPrimary', 'text-white');
+            event.target.classList.remove('bg-slate-100', 'text-slate-800');
+            renderFactory(group);
+        }
+
+        // ================= TAB 5: LANGUAGES RENDER & FILTER ================= //
+
+        function renderLanguages(filterPhase = 'ALL') {
+            const tbody = document.getElementById('languages-table-body');
+            tbody.innerHTML = '';
+
+            const filtered = filterPhase === 'ALL' ? languagesData : languagesData.filter(l => l.phase === filterPhase);
+
+            filtered.forEach(lang => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50";
+
+                tr.innerHTML = `
+                    <td class="p-2.5 font-bold text-deenSlate">${lang.name}</td>
+                    <td class="p-2.5 font-semibold text-deenPrimary">${lang.phase}</td>
+                    <td class="p-2.5 text-deenMuted">${lang.llm}</td>
+                    <td class="p-2.5 text-deenMuted">${lang.tts}</td>
+                    <td class="p-2.5"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${lang.difficulty.includes('High') ? 'bg-rose-100 text-rose-800' : 'bg-emerald-100 text-emerald-800'}">${lang.difficulty}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterLanguages(phase) {
+            document.querySelectorAll('.lang-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-deenPrimary', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-800');
+            });
+            event.target.classList.add('bg-deenPrimary', 'text-white');
+            event.target.classList.remove('bg-slate-100', 'text-slate-800');
+            renderLanguages(phase);
+        }
+
+        // ================= TAB 6: MASTERSHEET SIMULATOR ================= //
+
+        function switchSheetTab(sheetKey) {
+            activeSheet = sheetKey;
+            document.querySelectorAll('.sheet-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-deenPrimary', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            document.getElementById(`stab-${sheetKey}`).classList.add('bg-deenPrimary', 'text-white');
+            document.getElementById(`stab-${sheetKey}`).classList.remove('bg-slate-100', 'text-slate-700');
+
+            document.getElementById('sheet-title-display').innerText = `Sheet Preview: ${sheetKey}`;
+            renderSheetData();
+        }
+
+        function renderSheetData(query = '') {
+            const data = sheetData[activeSheet];
+            const thead = document.getElementById('sheet-thead');
+            const tbody = document.getElementById('sheet-tbody');
+
+            thead.innerHTML = '';
+            tbody.innerHTML = '';
+
+            let headerRow = '<tr>';
+            data.headers.forEach(h => {
+                headerRow += `<th class="p-2.5">${h}</th>`;
+            });
+            headerRow += '</tr>';
+            thead.innerHTML = headerRow;
+
+            const filteredRows = data.rows.filter(row => 
+                row.some(cell => cell.toLowerCase().includes(query.toLowerCase()))
+            );
+
+            filteredRows.forEach(row => {
+                let tr = '<tr class="hover:bg-slate-50">';
+                row.forEach((cell, i) => {
+                    let cellStyle = "p-2.5 text-deenSlate";
+                    if (cell.includes('Approved') || cell === 'Resolved') cellStyle += " font-bold text-emerald-700";
+                    if (cell.includes('Review') || cell.includes('Translation')) cellStyle += " text-amber-700 font-medium";
+                    tr += `<td class="${cellStyle}">${cell}</td>`;
+                });
+                tr += '</tr>';
+                tbody.innerHTML += tr;
+            });
+        }
+
+        function searchSheetData() {
+            const q = document.getElementById('sheet-search').value;
+            renderSheetData(q);
+        }
+
+        // ================= TAB 7: SMIL AUDIO SIMULATOR ================= //
+
+        function changeSmilLanguage() {
+            const lang = document.getElementById('smil-lang-select').value;
+            resetSmilAudio();
+            renderSmilText(lang, 0);
+        }
+
+        function renderSmilText(lang, highlightIndex) {
+            const container = document.getElementById('smil-text-box');
+            const sentences = smilTexts[lang];
+
+            let html = '<div class="space-y-2">';
+            sentences.forEach((s, i) => {
+                const isCurrent = i === highlightIndex;
+                html += `<p class="p-2 rounded-lg transition ${isCurrent ? 'smil-highlight font-bold' : 'text-deenMuted'}">${s}</p>`;
+            });
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        function toggleSmilAudio() {
+            const btn = document.getElementById('smil-play-btn');
+            if (isSmilPlaying) {
+                clearInterval(smilInterval);
+                isSmilPlaying = false;
+                btn.innerText = "▶ Resume Audio";
+            } else {
+                isSmilPlaying = true;
+                btn.innerText = "⏸ Pause Audio";
+                const lang = document.getElementById('smil-lang-select').value;
+
+                smilInterval = setInterval(() => {
+                    smilIndex = (smilIndex + 1) % smilTexts[lang].length;
+                    renderSmilText(lang, smilIndex);
+
+                    const progress = ((smilIndex + 1) / smilTexts[lang].length) * 100;
+                    document.getElementById('smil-progress').style.width = `${progress}%`;
+                    document.getElementById('smil-time').innerText = `00:0${(smilIndex + 1) * 4} / 00:12`;
+
+                    if (smilIndex === smilTexts[lang].length - 1) {
+                        setTimeout(() => {
+                            clearInterval(smilInterval);
+                            isSmilPlaying = false;
+                            btn.innerText = "▶ Play Audio";
+                        }, 3000);
+                    }
+                }, 3000);
+            }
+        }
+
+        function resetSmilAudio() {
+            clearInterval(smilInterval);
+            isSmilPlaying = false;
+            smilIndex = 0;
+            document.getElementById('smil-play-btn').innerText = "▶ Play Audio";
+            document.getElementById('smil-progress').style.width = "0%";
+            document.getElementById('smil-time').innerText = "00:00 / 00:12";
+            const lang = document.getElementById('smil-lang-select').value;
+            renderSmilText(lang, 0);
+        }
+
+        // ================= CHART.JS INITIALIZATION ================= //
+
+        function initCharts() {
+            chartsInitialized = true;
+
+            // 1. Production Velocity Chart
+            const ctxVelocity = document.getElementById('velocityChart').getContext('2d');
+            new Chart(ctxVelocity, {
+                type: 'line',
+                data: {
+                    labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12'],
+                    datasets: [
+                        {
+                            label: 'Cumulative eBook Editions Published',
+                            data: [50, 150, 350, 650, 1000, 1400, 1850, 2250, 2600, 2850, 3000, 3100],
+                            borderColor: '#0D5C3A',
+                            backgroundColor: 'rgba(13, 92, 58, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Synced Audiobooks Rendered',
+                            data: [20, 80, 200, 450, 750, 1100, 1500, 1900, 2250, 2550, 2800, 3100],
+                            borderColor: '#D97706',
+                            backgroundColor: 'transparent',
+                            borderDash: [5, 5],
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#F1F5F9' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // 2. AI Operating System Workload Allocation
+            const ctxStack = document.getElementById('stackDistributionChart').getContext('2d');
+            new Chart(ctxStack, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Translation Reasoning (Lyzr/GetMulti)', 'Audio Narration (Smallest AI)', 'Lip-Sync Video (HeyGen)', 'State Machine (Numerous AI)', 'Email Nurtures (Humanic AI)'],
+                    datasets: [{
+                        data: [35, 25, 20, 12, 8],
+                        backgroundColor: ['#0D5C3A', '#D97706', '#3B82F6', '#64748B', '#8B5CF6']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 9 } } }
+                    }
+                }
+            });
+
+            // 3. Language Radar Chart
+            const ctxRadar = document.getElementById('languageRadarChart').getContext('2d');
+            new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: ['LLM Translation Accuracy', 'TTS Latency/Quality', 'Islamic Glossary Availability', 'Scholar Reviewer Pool', 'Video Dubbing Accuracy'],
+                    datasets: [
+                        {
+                            label: 'Phase 1 (Core Markets)',
+                            data: [95, 95, 90, 95, 90],
+                            borderColor: '#0D5C3A',
+                            backgroundColor: 'rgba(13, 92, 58, 0.2)'
+                        },
+                        {
+                            label: 'Phase 3 (Indic Region)',
+                            data: [85, 90, 75, 80, 70],
+                            borderColor: '#D97706',
+                            backgroundColor: 'rgba(217, 119, 6, 0.2)'
+                        },
+                        {
+                            label: 'Phase 5 (Low Resource)',
+                            data: [65, 60, 50, 55, 45],
+                            borderColor: '#E11D48',
+                            backgroundColor: 'rgba(225, 29, 72, 0.2)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 9 } } }
+                    },
+                    scales: {
+                        r: { beginAtZero: true, max: 100 }
+                    }
+                }
+            });
+        }
+
+        // Initialization on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderTools('ALL');
+            renderLayers();
+            renderFactory('ALL');
+            renderLanguages('ALL');
+            switchSheetTab('Books_Master');
+            renderSmilText('en', 0);
+            initCharts();
+        });
+    </script>
+</body>
+</html>
